@@ -5,9 +5,9 @@ from shapely.geometry import Point
 app = Flask(__name__)
 
 # Load GeoJSON files
-parliament = gpd.read_file(r"C:\Users\farahanna.suid\OneDrive - Malaysian Communications and Multimedia Commission\Documents\QMoD\geodata\spatial-lookup-api\parliament.geojson")
-dun = gpd.read_file(r"C:\Users\farahanna.suid\OneDrive - Malaysian Communications and Multimedia Commission\Documents\QMoD\geodata\spatial-lookup-api\dun.geojson")
-district = gpd.read_file(r"C:\Users\farahanna.suid\OneDrive - Malaysian Communications and Multimedia Commission\Documents\QMoD\geodata\spatial-lookup-api\district.geojson")
+parliament = gpd.read_file(os.path.join(base_path, "parliament.geojson"))
+dun = gpd.read_file(os.path.join(base_path, "dun.geojson"))
+district = gpd.read_filegpd.read_file(os.path.join(base_path, "district.geojson"))
 
 @app.route('/lookup')
 def lookup():
@@ -44,3 +44,4 @@ def lookup():
 
 if __name__ == '__main__':
     app.run()
+
