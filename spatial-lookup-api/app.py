@@ -26,7 +26,7 @@ def lookup():
 
         # 🔹 Parliament match
         match_parliament = parliament[parliament.contains(point)]
-        parliament_name = match_parliament.iloc[0]["parliament"] if not match_parliament.empty else None
+        parliament_name = match_parliament.iloc[0]["parlimen"] if not match_parliament.empty else None
 
         # 🔹 DUN match
         match_dun = dun[dun.contains(point)]
@@ -38,9 +38,9 @@ def lookup():
 
         return jsonify({
             "match": any([parliament_name, dun_name, district_name]),
-            "district": district_name,
             "parliament": parliament_name,
-            "dun": dun_name
+            "dun": dun_name,
+            "district": district_name,
         })
 
     except Exception as e:
@@ -49,5 +49,6 @@ def lookup():
 # 🔹 Run Flask on all interfaces for Render
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
+
 
 
