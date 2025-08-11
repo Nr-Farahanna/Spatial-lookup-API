@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 import geopandas as gpd
 from shapely.geometry import Point
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # 🔹 Get the base path of the current file
 base_path = os.path.dirname(os.path.abspath(__file__))
@@ -49,6 +51,7 @@ def lookup():
 # 🔹 Run Flask on all interfaces for Render
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
+
 
 
 
